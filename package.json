@@ -2,12 +2,17 @@
   "name": "opencclint",
   "displayName": "opencclint",
   "description": "convert traditional and simplified",
+  "repository": {
+    "type": "git",
+		"url": "https://github.com/hddhyq/vscode-opencclint.git"
+  },
   "version": "0.0.1",
+  "license": "MIT",
   "engines": {
     "vscode": "^1.69.0"
   },
   "categories": [
-    "Other"
+    "Linters"
   ],
   "activationEvents": [
     "onCommand:opencclint.translateWord"
@@ -22,10 +27,10 @@
     ]
   },
   "scripts": {
-    "vscode:prepublish": "pnpm run compile",
+    "vscode:prepublish": "yarn run compile",
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
-    "pretest": "pnpm run compile && pnpm run lint",
+    "pretest": "yarn run compile && yarn run lint",
     "lint": "eslint src --ext ts",
     "test": "node ./out/test/runTest.js"
   },
