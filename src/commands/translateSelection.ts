@@ -3,7 +3,7 @@ import * as vscode from 'vscode';
 
 export function registerTranslateSelectionCommand() {
   const register = vscode.commands.registerTextEditorCommand(
-    "opencclint.reverseWord",
+    "opencclint.translateWord",
     (textEditor: vscode.TextEditor) => {
     const options: opencc.ConverterOptions = { from: 'cn', to: 'tw'};
     let document: vscode.TextDocument = textEditor.document;

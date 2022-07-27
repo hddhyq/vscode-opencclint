@@ -10,19 +10,14 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:opencclint.helloWorld",
-    "onCommand:opencclint.reverseWord"
+    "onCommand:opencclint.translateWord"
   ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "opencclint.helloWorld",
-        "title": "Hello World"
-      },
-      {
-        "command": "opencclint.reverseWord",
-        "title": "reverseWord"
+        "command": "opencclint.translateWord",
+        "title": "OpenccLint: Translate File"
       }
     ]
   },
