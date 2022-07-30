@@ -25,6 +25,13 @@
         "command": "opencclint.translateWord",
         "title": "OpenccLint: Translate File"
       }
+    ],
+    "keybindings": [
+      {
+        "command": "opencclint.translateWord",
+        "key": "ctrl+alt+o",
+        "mac": "shift+cmd+o"
+      }
     ]
   },
   "scripts": {
