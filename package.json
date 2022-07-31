@@ -1,61 +1,14 @@
 {
-  "name": "opencclint",
-  "displayName": "opencclint",
-  "description": "convert traditional and simplified",
-  "repository": {
-    "type": "git",
-		"url": "https://github.com/hddhyq/vscode-opencclint.git"
-  },
-  "publisher": "brokenbonesdd",
-  "version": "0.0.1",
-  "license": "MIT",
-  "engines": {
-    "vscode": "^1.69.0"
-  },
-  "categories": [
-    "Linters"
-  ],
-  "activationEvents": [
-    "onCommand:opencclint.translateWord"
-  ],
-  "main": "./out/extension.js",
-  "contributes": {
-    "commands": [
-      {
-        "command": "opencclint.translateWord",
-        "title": "OpenccLint: Translate File"
-      }
-    ],
-    "keybindings": [
-      {
-        "command": "opencclint.translateWord",
-        "key": "ctrl+alt+o",
-        "mac": "shift+cmd+o"
-      }
-    ]
-  },
   "scripts": {
-    "vscode:prepublish": "yarn run compile",
-    "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./",
-    "pretest": "yarn run compile && yarn run lint",
-    "lint": "eslint src --ext ts",
-    "test": "node ./out/test/runTest.js"
+    "build": "tsc -b tsconfig.build.json",
+    "compile": "cd packages/opencclint && npm run compile",
+    "watch": "npm run build && (npm run watch:base && npm run watch:opencclint)",
+    "watch:base": "tsc -b tsconfig.build.json -w",
+    "watch:opencclint": "cd packages/opencclint && npm run watch"
   },
   "devDependencies": {
-    "@types/glob": "^7.2.0",
-    "@types/mocha": "^9.1.1",
-    "@types/node": "16.x",
-    "@types/vscode": "^1.69.0",
-    "@typescript-eslint/eslint-plugin": "^5.30.0",
-    "@typescript-eslint/parser": "^5.30.0",
-    "@vscode/test-electron": "^2.1.5",
-    "eslint": "^8.18.0",
-    "glob": "^8.0.3",
-    "mocha": "^10.0.0",
-    "typescript": "^4.7.4"
-  },
-  "dependencies": {
-    "opencc-js": "^1.0.4"
+    "@lerna-lite/cli": "latest",
+    "@types/node": "latest",
+    "typescript": "latest"
   }
 }

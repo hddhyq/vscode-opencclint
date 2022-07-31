@@ -1,0 +1,20 @@
+{
+  "extends": "../../tsconfig.base.json",
+	"compilerOptions": {
+		"outDir": "out",
+		"rootDir": "src",
+    "paths": {
+      "*": [
+        "../types/*"
+      ]
+    }
+	},
+	"include": [
+		"src",
+    "types"
+	],
+	"exclude": [
+		"node_modules",
+		".vscode-test"
+	],
+}
