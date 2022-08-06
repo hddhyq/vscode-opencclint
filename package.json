@@ -16,19 +16,19 @@
     "Linters"
   ],
   "activationEvents": [
-    "onCommand:opencclint.translateWord"
+    "onCommand:opencclint.translateFile"
   ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "opencclint.translateWord",
+        "command": "opencclint.translateFile",
         "title": "OpenccLint: Translate File"
       }
     ],
     "keybindings": [
       {
-        "command": "opencclint.translateWord",
+        "command": "opencclint.translateFile",
         "key": "ctrl+alt+o",
         "mac": "shift+cmd+o"
       }

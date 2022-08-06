@@ -1,9 +1,7 @@
-// vscode.workspace.onDidSaveTextDocument(
-
 import * as opencc from 'opencc-js';
 import * as vscode from 'vscode';
 
-export function registerSaveOnFormat() {
+export function registerTranslateOnSave() {
   const register = vscode.workspace.onWillSaveTextDocument(
     ({
       document,
@@ -22,10 +20,9 @@ export function registerSaveOnFormat() {
         );
 
         const converter: opencc.ConvertText = opencc.Converter(options);
-        let text = document.getText(selection);
-
+        const text = document.getText(selection);
         const result = converter(text);
-        console.log(selection, result);
+
         waitUntil(textEditor.edit((builder) => {
           builder.replace(selection, result);
         }));

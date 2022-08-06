@@ -1,6 +1,6 @@
-import { registerTranslateSelectionCommand } from './translateSelection';
+import { registerTranslateFileCommand } from './translateFile';
 
-const translateSelectionCommand = registerTranslateSelectionCommand();
+const translateSelectionCommand = registerTranslateFileCommand();
 
 export const commands = [
   translateSelectionCommand,

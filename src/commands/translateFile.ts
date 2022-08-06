@@ -1,9 +1,9 @@
 import * as opencc from 'opencc-js';
 import * as vscode from 'vscode';
 
-export function registerTranslateSelectionCommand() {
+export function registerTranslateFileCommand() {
   const register = vscode.commands.registerTextEditorCommand(
-    "opencclint.translateWord",
+    "opencclint.translateFile",
     (textEditor: vscode.TextEditor) => {
     const options: opencc.ConverterOptions = { from: 'cn', to: 'tw'};
     let document: vscode.TextDocument = textEditor.document;
