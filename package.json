@@ -4,7 +4,7 @@
   "description": "convert traditional and simplified",
   "repository": {
     "type": "git",
-		"url": "https://github.com/hddhyq/vscode-opencclint.git"
+    "url": "https://github.com/hddhyq/vscode-opencclint.git"
   },
   "publisher": "brokenbonesdd",
   "version": "0.0.1",
@@ -16,7 +16,8 @@
     "Linters"
   ],
   "activationEvents": [
-    "onCommand:opencclint.translateFile"
+    "onCommand:opencclint.translateFile",
+    "onStartupFinished"
   ],
   "main": "./out/extension.js",
   "contributes": {
@@ -32,7 +33,46 @@
         "key": "ctrl+alt+o",
         "mac": "shift+cmd+o"
       }
-    ]
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "opencclint",
+      "properties": {
+        "opencclint.languages": {
+          "default": [
+            "vue",
+            "plaintext",
+            "html",
+            "typescript",
+            "javascript",
+            "jsx",
+            "jsonc"
+          ],
+          "type": [
+            "array"
+          ],
+          "items": {
+            "type": "string"
+          },
+          "description": "Languages to lint with opencclint."
+        },
+        "opencclint.debug": {
+          "default": false,
+          "type": "boolean",
+          "description": "Toggle debug mode."
+        },
+        "opencclint.converterOptions": {
+          "default": "cn=>tw",
+          "type": "string",
+          "description": "Opencclint converter options."
+        },
+        "opencclint.autoFixOnSave": {
+          "default": false,
+          "type": "boolean",
+          "description": "Opencclint autoFixOnSave options."
+        }
+      }
+    }
   },
   "scripts": {
     "vscode:prepublish": "yarn run compile",
@@ -56,6 +96,7 @@
     "typescript": "^4.7.4"
   },
   "dependencies": {
+    "cosmiconfig": "^7.0.1",
     "opencc-js": "^1.0.4"
   }
 }
