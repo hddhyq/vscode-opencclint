@@ -6,7 +6,8 @@ import {
   getConverterOptions,
   isDebug,
   getAutoFixOnSave,
-  getIgnoreWords
+  getIgnoreWords,
+  compareIsExclude
 } from '../settings';
 
 export async function registerTranslateOnSave(e: vscode.TextDocumentWillSaveEvent) {
@@ -23,6 +24,11 @@ export async function registerTranslateOnSave(e: vscode.TextDocumentWillSaveEven
 
   async function textEdit() {
     const ignoreWords = await getIgnoreWords();
+    const isExclude = await compareIsExclude(document);
+
+    if (isExclude) {
+      return;
+    }
 
     const fullText = document.getText();
     const selection: vscode.Range = new vscode.Range(
