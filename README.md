@@ -63,6 +63,8 @@
 
 根目录添加 `.opencclintrc.json` 文件，如果使用了 [opencclint](https://github.com/hddhyq/opencclint) ，则可以直接在 `simplify.config.js` 配置。两个配置文件保留一个就行，如果两个文件都存在，配置将会合并。
 
+> 修改配置文件后需要重启编辑器窗口。
+
 ```js
 // .opencclint.json
 {
