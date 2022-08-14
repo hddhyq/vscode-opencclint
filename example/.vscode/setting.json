@@ -1,0 +1,5 @@
+{
+  "opencclint.debug": false,
+  "opencclint.converterOptions": "cn=>tw",
+  "opencclint.autoFixOnSave": true
+}

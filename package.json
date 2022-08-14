@@ -1,7 +1,7 @@
 {
   "name": "opencclint",
   "displayName": "opencclint",
-  "description": "convert traditional and simplified",
+  "description": "使用 opencc 转换繁简体, 保存自动格式化",
   "repository": {
     "type": "git",
     "url": "https://github.com/hddhyq/vscode-opencclint.git"
@@ -26,7 +26,8 @@
     "繁",
     "繁体",
     "简",
-    "简体"
+    "简体",
+    "繁简体"
   ],
   "activationEvents": [
     "onCommand:opencclint.translateFile",

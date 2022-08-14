@@ -1,20 +1,22 @@
 # opencclint README
 
-使用 opencc 转换繁简体，可添加多种自定义配置。
+使用 opencc 转换繁简体，可添加多种自定义配置，如忽略文字，忽略文件，保存自动转换。
 
 ## 特性
 
-- 文件转换繁简体。
-- 文本选中转换繁简体。
-- 保存文件自动转换繁简体。
-- 转换快捷键。
-- 可配置忽略文件、忽略文件夹、忽略词组。
+- [文件转换繁简体](#文件转换繁简体)。
+- [文本选中转换繁简体](#文本选中转换繁简体)。
+- [保存文件自动转换繁简体](#保存文件自动转换繁简体)。
+- [转换快捷键](#快捷键列表)。
+- [可配置忽略文件、忽略文件夹、忽略词组](#配置文件)。
 
 ### 文件转换繁简体
 
+参考[示例文件夹](/example)配置。
+
 #### 使用方法
 
-- 当前文件，使用快捷键：`Ctrl+Alt+o` 在 Windows 和 Linux 上，或 `Option+CMD+o` 在 OSX 上。
+- 当前文件，使用快捷键：`Ctrl+Alt+O` 在 Windows 和 Linux 上，或 `Option+CMD+O` 在 OSX 上。
 - 当前文件，调出命令面板（`F1`，或 `Ctrl+Shift+P` 在 Windows 和 Linux 上，或 `Shift+CMD+P` 在 OSX 上），输入`OpenccLint: Translate File`。
 
 #### 示例
@@ -26,7 +28,7 @@
 #### 使用方法
 
 - 选中文本，使用右键菜单，点击: `OpenccLint: Translate Selection` 选项。
-- 选中文本，使用快捷键 `Ctrl+Alt+p` 在 Windows 和 Linux 上，或 `Option+CMD+p` 在 OSX 上。
+- 选中文本，使用快捷键 `Ctrl+Alt+P` 在 Windows 和 Linux 上，或 `Option+CMD+P` 在 OSX 上。
 - 选中文本，调出命令面板（F1，或Ctrl+Shift+P在 Windows 和 Linux 上，或Shift+CMD+P在 OSX 上），输入`OpenccLint: Translate Selection`。
 
 #### 示例
@@ -37,7 +39,7 @@
 
 #### 使用方法
 
-需要配置中开启 `"opencclint.autoFixOnSave": true`。
+需要在[配置文件](#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6)中开启 `"opencclint.autoFixOnSave": true`。
 
 默认可自动保存文件格式包括：`"opencclint.languages": ["vue", "plaintext", "html", "typescript", "javascript", "jsx", "jsonc", "php"]`，可手动修改，修改后默认值不可用。
 
@@ -53,22 +55,6 @@
 #### 示例
 
 ![保存自动转换](images/autoSave.gif)
-
-## 插件配置
-
-|      配置       |           默认值 |           备注  |
-|-----------------|-----------------|-----------------|
-|`opencclint.converterOptions`|`cn=>tw`|opencc 转换配置项, ["cn", "tw", "twp", "hk", "jp", "t"] 参考：[api](https://github.com/nk2028/opencc-js#api)|
-|`opencclint.autoFixOnSave`|`false`|是否开启自动保存|
-|`opencclint.languages`|`["vue", "plaintext", "html", "typescript", "javascript", "jsx", "jsonc", "php"]`|需要自动保存的文件格式|
-|`opencclint.debug`|`false`|查看debug信息|
-
-## 指令列表
-
-|指令|描述|
-|---|----|
-|`OpenccLint: Translate File`| 转换当前文件繁简体|
-|`OpenccLint: Translate Selection`| 转换当前选中文本繁简体|
 
 ## 配置文件
 
@@ -100,6 +86,29 @@
   ]
 }
 ```
+
+## 插件配置
+
+|      配置       |           默认值 |           备注  |
+|-----------------|-----------------|-----------------|
+|`opencclint.converterOptions`|`cn=>tw`|opencc 转换配置项, ["cn", "tw", "twp", "hk", "jp", "t"] 参考：[api](https://github.com/nk2028/opencc-js#api)|
+|`opencclint.autoFixOnSave`|`false`|是否开启自动保存|
+|`opencclint.languages`|`["vue", "plaintext", "html", "typescript", "javascript", "jsx", "jsonc", "php"]`|需要自动保存的文件格式|
+|`opencclint.debug`|`false`|查看debug信息|
+
+## 指令列表
+
+|指令|描述|
+|---|----|
+|`OpenccLint: Translate File`| 转换当前文件繁简体|
+|`OpenccLint: Translate Selection`| 转换当前选中文本繁简体|
+
+## 快捷键列表
+
+|快捷键|描述|
+|---|----|
+|`Ctrl+Alt+O` 或 `Option+CMD+O`| 转换当前文件繁简体|
+|`Ctrl+Alt+P` 或 `Option+CMD+P`| 转换当前选中文本繁简体|
 
 ## 暂不支持
 
