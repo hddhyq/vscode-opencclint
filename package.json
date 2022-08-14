@@ -15,6 +15,19 @@
   "categories": [
     "Linters"
   ],
+  "keywords": [
+    "chinese",
+    "opencc",
+    "translation",
+    "traditional",
+    "simplified",
+    "taiwan",
+    "hong kong",
+    "繁",
+    "繁体",
+    "简",
+    "简体"
+  ],
   "activationEvents": [
     "onCommand:opencclint.translateFile",
     "onCommand:opencclint.translateSelection",
@@ -39,7 +52,7 @@
         "mac": "shift+cmd+o"
       },
       {
-        "command": "opencclint.translateFile",
+        "command": "opencclint.translateSelection",
         "key": "ctrl+alt+p",
         "mac": "shift+cmd+p"
       }
@@ -118,7 +131,6 @@
   "dependencies": {
     "cosmiconfig": "^7.0.1",
     "ignore": "^5.2.0",
-    "minimatch": "^5.1.0",
     "opencc-js": "^1.0.4"
   }
 }
