@@ -66,7 +66,7 @@
 > 修改配置文件后需要重启编辑器窗口。
 
 ```js
-// .opencclint.json
+// .opencclintrc.json
 {
   "ignoreWords": ["台", "里", "周"],
   "exclude": [
