@@ -50,11 +50,14 @@ export async function registerTranslateOnSave(e: vscode.TextDocumentWillSaveEven
 
     return textEditor!.edit((builder) => {
       for (const diff of diffs) {
+        const key = diff.modifiedLength ? 'modified' : 'original';
+        const positionStart = diff[`${key}Start`];
+        const positionEnd = diff[`${key}Start`] + diff[`${key}Length`];
         const range: vscode.Range = new vscode.Range(
-          document.positionAt(diff.originalStart),
-          document.positionAt(diff.originalStart + diff.originalLength)
+          document.positionAt(positionStart),
+          document.positionAt(positionEnd)
         );
-        const replaceText = result.substring(diff.originalStart, diff.originalStart + diff.originalLength);
+        const replaceText = result.substring(positionStart, positionEnd);
         builder.replace(range, replaceText);
       }
     });
