@@ -127,6 +127,10 @@
 
 添加自动保存转换功能及配置文件。
 
+### 0.0.3(2022-12-14)
+
+修复 twp=>cn 模式下，转换异常。
+
 ## 感谢
 
 - [OpenCC](https://github.com/BYVoid/OpenCC)
