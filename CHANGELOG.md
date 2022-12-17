@@ -1,9 +1,17 @@
 # Change Log
 
-All notable changes to the "opencclint" extension will be documented in this file.
+## 0.0.1(2022-07-26)
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+feat: 添加命令行转换文件
 
-## [Unreleased]
+## 0.0.2(2022-08-15)
 
-- Initial release
+feat: 添加自动保存转换功能及配置文件。
+
+## 0.0.3(2022-12-14)
+
+fix: [#2](https://github.com/hddhyq/vscode-opencclint/issues/2) 修复 twp=>cn 模式下，转换异常。
+
+## 0.0.4(2022-12-17)
+
+fix: 修复 translateSelection 转换异常。
