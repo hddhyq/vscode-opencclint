@@ -131,6 +131,10 @@
 
 修复 twp=>cn 模式下，转换异常。
 
+### 0.0.4(2022-12-17)
+
+修复 translateSelection 转换异常。
+
 ## 感谢
 
 - [OpenCC](https://github.com/BYVoid/OpenCC)
