@@ -7,7 +7,7 @@
     "url": "https://github.com/hddhyq/vscode-opencclint.git"
   },
   "publisher": "brokenbonesdd",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "license": "MIT",
   "icon": "logo.png",
   "engines": {
@@ -111,6 +111,7 @@
   },
   "scripts": {
     "vscode:prepublish": "yarn run compile",
+    "package": "vsce package",
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
     "pretest": "yarn run compile && yarn run lint",
@@ -125,6 +126,7 @@
     "@typescript-eslint/eslint-plugin": "^5.30.0",
     "@typescript-eslint/parser": "^5.30.0",
     "@vscode/test-electron": "^2.1.5",
+    "@vscode/vsce": "^2.15.0",
     "eslint": "^8.18.0",
     "glob": "^8.0.3",
     "mocha": "^10.0.0",
