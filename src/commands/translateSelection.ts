@@ -28,11 +28,12 @@ export async function registerTranslateSelectionCommand(textEditor: vscode.TextE
   textEditor.edit((builder) => {
     for (const diff of diffs) {
       const key = diff.modifiedLength ? 'modified' : 'original';
+      const selectionStart = document.offsetAt(textEditor.selection.start);
       const positionStart = diff[`${key}Start`];
       const positionEnd = diff[`${key}Start`] + diff[`${key}Length`];
       const range: vscode.Range = new vscode.Range(
-        document.positionAt(positionStart),
-        document.positionAt(positionEnd)
+        document.positionAt(selectionStart + positionStart),
+        document.positionAt(selectionStart + positionEnd)
       );
       const replaceText = result.substring(positionStart, positionEnd);
       builder.replace(range, replaceText);
