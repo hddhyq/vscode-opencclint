@@ -16,7 +16,7 @@
 
 #### 使用方法
 
-- 当前文件，使用快捷键：`Ctrl+Alt+O` 在 Windows 和 Linux 上，或 `Option+CMD+O` 在 OSX 上。
+- 当前文件，使用快捷键：`Ctrl+Alt+O` 在 Windows 和 Linux 上，或 `Ctrl+CMD+O` 在 OSX 上。
 - 当前文件，调出命令面板（`F1`，或 `Ctrl+Shift+P` 在 Windows 和 Linux 上，或 `Shift+CMD+P` 在 OSX 上），输入`OpenccLint: Translate File`。
 
 #### 示例
@@ -28,8 +28,8 @@
 #### 使用方法
 
 - 选中文本，使用右键菜单，点击: `OpenccLint: Translate Selection` 选项。
-- 选中文本，使用快捷键 `Ctrl+Alt+P` 在 Windows 和 Linux 上，或 `Option+CMD+P` 在 OSX 上。
-- 选中文本，调出命令面板（F1，或Ctrl+Shift+P在 Windows 和 Linux 上，或Shift+CMD+P在 OSX 上），输入`OpenccLint: Translate Selection`。
+- 选中文本，使用快捷键 `Ctrl+Alt+P` 在 Windows 和 Linux 上，或 `Ctrl+CMD+P` 在 OSX 上。
+- 选中文本，调出命令面板（F1，或 `Ctrl+Shift+P` 在 Windows 和 Linux 上，或 `Shift+CMD+P` 在 OSX 上），输入`OpenccLint: Translate Selection`。
 
 #### 示例
 
@@ -109,8 +109,8 @@
 
 |快捷键|描述|
 |---|----|
-|`Ctrl+Alt+O` 或 `Option+CMD+O`| 转换当前文件繁简体|
-|`Ctrl+Alt+P` 或 `Option+CMD+P`| 转换当前选中文本繁简体|
+|`Ctrl+Alt+O` 或 `Ctrl+CMD+O`| 转换当前文件繁简体|
+|`Ctrl+Alt+P` 或 `Ctrl+CMD+P`| 转换当前选中文本繁简体|
 
 ## 暂不支持
 

@@ -51,12 +51,12 @@
       {
         "command": "opencclint.translateFile",
         "key": "ctrl+alt+o",
-        "mac": "opt+cmd+o"
+        "mac": "ctrl+cmd+o"
       },
       {
         "command": "opencclint.translateSelection",
         "key": "ctrl+alt+p",
-        "mac": "opt+cmd+p"
+        "mac": "ctrl+cmd+p"
       }
     ],
     "configuration": {
