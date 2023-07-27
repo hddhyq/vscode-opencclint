@@ -51,12 +51,12 @@
       {
         "command": "opencclint.translateFile",
         "key": "ctrl+alt+o",
-        "mac": "shift+cmd+o"
+        "mac": "opt+cmd+o"
       },
       {
         "command": "opencclint.translateSelection",
         "key": "ctrl+alt+p",
-        "mac": "shift+cmd+p"
+        "mac": "opt+cmd+p"
       }
     ],
     "configuration": {
@@ -135,6 +135,6 @@
   "dependencies": {
     "cosmiconfig": "^7.0.1",
     "ignore": "^5.2.0",
-    "opencc-js": "^1.0.4"
+    "opencc-js": "^1.0.5"
   }
 }

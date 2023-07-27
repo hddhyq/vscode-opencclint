@@ -15,3 +15,7 @@ fix: [#2](https://github.com/hddhyq/vscode-opencclint/issues/2) 修复 twp=>cn �
 ## 0.0.4(2022-12-17)
 
 fix: 修复 translateSelection 转换异常。
+
+## 0.0.5(2023-7-27)
+
+fix: [#5](https://github.com/hddhyq/vscode-opencclint/issues/5) 修复 Mac keybinding 冲突。

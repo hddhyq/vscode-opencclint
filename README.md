@@ -135,6 +135,10 @@
 
 修复 translateSelection 转换异常。
 
+### 0.0.5(2022-7-27)
+
+fix: [#5](https://github.com/hddhyq/vscode-opencclint/issues/5) 修复 Mac keybinding 冲突。
+
 ## 感谢
 
 - [OpenCC](https://github.com/BYVoid/OpenCC)
