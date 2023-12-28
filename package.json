@@ -32,7 +32,9 @@
   ],
   "activationEvents": [
     "onCommand:opencclint.translateFile",
+    "onCommand:opencclint.translateFileRevert",
     "onCommand:opencclint.translateSelection",
+    "onCommand:opencclint.translateSelectionRevert",
     "onStartupFinished"
   ],
   "main": "./out/extension.js",
@@ -43,8 +45,16 @@
         "title": "OpenccLint: Translate File"
       },
       {
+        "command": "opencclint.translateFileRevert",
+        "title": "OpenccLint: Translate File Revert"
+      },
+      {
         "command": "opencclint.translateSelection",
         "title": "OpenccLint: Translate Selection"
+      },
+      {
+        "command": "opencclint.translateSelectionRevert",
+        "title": "OpenccLint: Translate Selection Revert"
       }
     ],
     "keybindings": [
@@ -54,9 +64,19 @@
         "mac": "ctrl+cmd+o"
       },
       {
+        "command": "opencclint.translateFileRevert",
+        "key": "ctrl+alt+shift+o",
+        "mac": "ctrl+cmd+shift+o"
+      },
+      {
         "command": "opencclint.translateSelection",
         "key": "ctrl+alt+p",
         "mac": "ctrl+cmd+p"
+      },
+      {
+        "command": "opencclint.translateSelectionRevert",
+        "key": "ctrl+alt+shift+p",
+        "mac": "ctrl+cmd+shift+p"
       }
     ],
     "configuration": {
@@ -72,7 +92,13 @@
             "javascript",
             "jsx",
             "jsonc",
-            "php"
+            "php",
+            "scss",
+            "css",
+            "less",
+            "sass",
+            "stylus",
+            "markdown"
           ],
           "type": [
             "array"
@@ -102,8 +128,23 @@
     "menus": {
       "editor/context": [
         {
+          "when": "!editorHasSelection",
+          "command": "opencclint.translateFile",
+          "group": "7_modification"
+        },
+        {
+          "when": "!editorHasSelection",
+          "command": "opencclint.translateFileRevert",
+          "group": "7_modification"
+        },
+        {
           "when": "editorHasSelection",
           "command": "opencclint.translateSelection",
+          "group": "7_modification"
+        },
+        {
+          "when": "editorHasSelection",
+          "command": "opencclint.translateSelectionRevert",
           "group": "7_modification"
         }
       ]

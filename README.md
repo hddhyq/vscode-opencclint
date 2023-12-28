@@ -41,14 +41,14 @@
 
 需要在[配置文件](#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6)中开启 `"opencclint.autoFixOnSave": true`。
 
-默认可自动保存文件格式包括：`"opencclint.languages": ["vue", "plaintext", "html", "typescript", "javascript", "jsx", "jsonc", "php"]`，可手动修改，修改后默认值不可用。
+默认可自动保存文件格式包括：`"opencclint.languages": ["vue", "plaintext", "html", "typescript", "javascript", "jsx", "jsonc", "php", "scss", "css", "less", "sass", "stylus", "markdown"]`，可手动修改，修改后默认值不可用。
 
 如果不太清楚文件的格式，可以开启 `"opencclint.debug": true`，查看文件的 `languageId`，如：`"languageId":"javascript"`。
 
 ```jsonc
 {
   "opencclint.autoFixOnSave": true,
-  "opencclint.languages": ["vue", "plaintext", "html", "typescript", "javascript", "jsx", "jsonc", "php"],
+  "opencclint.languages": ["vue", "plaintext", "html", "typescript", "javascript", "jsx", "jsonc", "php", "scss", "css", "less", "sass", "stylus", "markdown"],
 }
 ```
 
@@ -61,7 +61,9 @@
 - `ignoreWords`: 需要忽略的文本，如：台湾 => 台(~~臺~~)灣。
 - `exclude`: 需要排除的文件或文件夾，參照：[.gitignore spec 2.22.1](https://git-scm.com/docs/gitignore)
 
-根目录添加 `.opencclintrc.json` 文件，如果使用了 [opencclint](https://github.com/hddhyq/opencclint) ，则可以直接在 `simplify.config.js` 配置。两个配置文件保留一个就行，如果两个文件都存在，配置将会合并。
+根目录添加 `.opencclintrc.json` 文件。文件格式参考 [cosmiconfig](https://www.npmjs.com/package/cosmiconfig)
+
+> 兼容：如果使用了 [opencclint](https://github.com/hddhyq/opencclint) ，则可以直接在 `simplify.config.js` 配置。两个配置文件保留一个就行，如果两个文件都存在，配置将会合并。
 
 > 修改配置文件后需要重启编辑器窗口。
 
@@ -91,26 +93,32 @@
 
 ## 插件配置
 
-|      配置       |           默认值 |           备注  |
-|-----------------|-----------------|-----------------|
-|`opencclint.converterOptions`|`cn=>tw`|opencc 转换配置项, ["cn", "tw", "twp", "hk", "jp", "t"] 参考：[api](https://github.com/nk2028/opencc-js#api)|
-|`opencclint.autoFixOnSave`|`false`|是否开启自动保存|
-|`opencclint.languages`|`["vue", "plaintext", "html", "typescript", "javascript", "jsx", "jsonc", "php"]`|需要自动保存的文件格式|
-|`opencclint.debug`|`false`|查看debug信息|
+| 配置                          | 默认值                                                                            | 备注                                                                                                         |
+| ----------------------------- | --------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
+| `opencclint.converterOptions` | `cn=>tw`                                                                          | opencc 转换配置项, ["cn", "tw", "twp", "hk", "jp", "t"] 参考：[api](https://github.com/nk2028/opencc-js#api) |
+| `opencclint.autoFixOnSave`    | `false`                                                                           | 是否开启自动保存                                                                                             |
+| `opencclint.languages`        | `["vue", "plaintext", "html", "typescript", "javascript", "jsx", "jsonc", "php", "scss", "css", "less", "sass", "stylus", "markdown"]` | 需要自动保存的文件格式                                                                                       |
+| `opencclint.debug`            | `false`                                                                           | 查看debug信息                                                                                                |
 
 ## 指令列表
 
-|指令|描述|
-|---|----|
-|`OpenccLint: Translate File`| 转换当前文件繁简体|
-|`OpenccLint: Translate Selection`| 转换当前选中文本繁简体|
+| 指令                                            | 描述                       |
+| ----------------------------------------------- | -------------------------- |
+| `OpenccLint: Translate File`                    | 转换当前文件繁简体         |
+| `OpenccLint: Translate Selection`               | 转换当前选中文本繁简体     |
+| `onCommand:opencclint.translateFile`            | 转换当前文件繁简体         |
+| `onCommand:opencclint.translateFileRevert`      | 撤销当前选中文本繁简体转换     |
+| `onCommand:opencclint.translateSelection`       | 转换当前选中文本繁简体     |
+| `onCommand:opencclint.translateSelectionRevert` | 撤销当前选中文本繁简体转换 |
 
 ## 快捷键列表
 
-|快捷键|描述|
-|---|----|
-|`Ctrl+Alt+O` 或 `Ctrl+CMD+O`| 转换当前文件繁简体|
-|`Ctrl+Alt+P` 或 `Ctrl+CMD+P`| 转换当前选中文本繁简体|
+| 快捷键                                          | 描述                       |
+| ----------------------------------------------- | -------------------------- |
+| `Ctrl+Alt+O` 或 `Ctrl+CMD+O`                    | 转换当前文件繁简体            |
+| `Ctrl+Alt+Shift+O` 或 `Ctrl+CMD+Shift+O`        | 撤销当前选中文本繁简体转换     |
+| `Ctrl+Alt+P` 或 `Ctrl+CMD+P`                    | 转换当前选中文本繁简体         |
+| `Ctrl+Alt+Shift+P` 或 `Ctrl+CMD+Shift+P`        | 撤销当前选中文本繁简体转换     |
 
 ## 暂不支持
 
@@ -135,9 +143,16 @@
 
 修复 translateSelection 转换异常。
 
-### 0.0.5(2022-7-27)
+### 0.0.5(2023-7-27)
 
 fix: [#5](https://github.com/hddhyq/vscode-opencclint/issues/5) 修复 Mac keybinding 冲突。
+
+### 0.0.6(2023-12-28)
+
+- chore: 更新 OpenccLint 配置和指令。
+- feat: 添加 `onCommand:opencclint.translateFileRevert` 撤销当前文件繁简体转换
+- feat: 添加 `onCommand:opencclint.translateSelectionRevert` 撤销当前选中文本繁简体转换
+
 
 ## 感谢
 

@@ -6,13 +6,18 @@ import {
   getIgnoreWords
 } from '../settings';
 
-export async function registerTranslateSelectionCommand(textEditor: vscode.TextEditor) {
+export async function registerTranslateSelectionCommand(textEditor: vscode.TextEditor, isRevert: boolean = false) {
   const ignoreWords = await getIgnoreWords();
 
   let document: vscode.TextDocument = textEditor.document;
   let selection = textEditor.selection;
 
   const options: opencc.ConverterOptions = getConverterOptions();
+  if (isRevert) {
+    const { from, to } = options;
+    options.from = to;
+    options.to = from;
+  }
   const converter: opencc.ConvertText = opencc.Converter(options);
 
   let text = document.getText(selection);
