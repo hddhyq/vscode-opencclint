@@ -1,9 +1,11 @@
 import * as vscode from 'vscode';
 import * as opencc from 'opencc-js';
 import * as path from 'path';
-import * as fs from 'fs';
 import { cosmiconfigSync } from 'cosmiconfig';
 import ignore from 'ignore';
+
+const explorerSimplify = cosmiconfigSync('simplify'); // old file type, for compatibility
+const explorerOpencclint = cosmiconfigSync('opencclint');
 
 export function getConfig<T>(section: string) {
   return vscode.workspace.getConfiguration("opencclint").get<T>(section)!;
@@ -46,12 +48,6 @@ export function getAutoFixOnSave(): boolean {
   return getConfig<boolean>('autoFixOnSave');
 }
 
-
-const explorerSimplify = cosmiconfigSync('simplify'); // old file type
-const explorerOpencclint = cosmiconfigSync('opencclint');
-const simplifyConfigPath = 'simplify.config.js';
-const opencclintConfigPath = '.opencclintrc.json';
-
 export async function getIgnoreWords(): Promise<string[]> {
   const folders = vscode.workspace.workspaceFolders;
 
@@ -65,17 +61,16 @@ export async function getIgnoreWords(): Promise<string[]> {
   }
 
   let ignoreWords: string[] = [];
-  const simplifyConfigFile = path.join(folders[0].uri.fsPath, simplifyConfigPath);
-  const opencclintrcFile = path.join(folders[0].uri.fsPath, opencclintConfigPath);
+  const simplifyResult = await explorerSimplify.search(folders[0].uri.fsPath);
+  const opencclintResult = await explorerOpencclint.search(folders[0].uri.fsPath);
 
-  if (fs.existsSync(simplifyConfigFile)) {
-    const result = await explorerSimplify.load(simplifyConfigFile);
-    ignoreWords.push(...Object.keys(result?.config.ignoreTexts ?? {}));
+
+  if (simplifyResult) {
+    ignoreWords.push(...Object.keys(simplifyResult?.config.ignoreTexts ?? {}));
   }
 
-  if (fs.existsSync(opencclintrcFile)) {
-    const result = await explorerOpencclint.load(opencclintrcFile);
-    ignoreWords.push(...(result?.config.ignoreWords ?? []));
+  if (opencclintResult) {
+    ignoreWords.push(...(opencclintResult?.config.ignoreWords ?? []));
   }
 
   if (ignoreWords.some(v => typeof v !== 'string')) {
@@ -94,17 +89,15 @@ export async function getExclude(): Promise<string[]> {
   }
 
   let exclude: string[] = [];
-  const simplifyConfigFile = path.join(folders[0].uri.fsPath, simplifyConfigPath);
-  const opencclintrcFile = path.join(folders[0].uri.fsPath, opencclintConfigPath);
+  const simplifyResult = await explorerSimplify.search(folders[0].uri.fsPath);
+  const opencclintResult = await explorerOpencclint.search(folders[0].uri.fsPath);
 
-  if (fs.existsSync(simplifyConfigFile)) {
-    const result = await explorerSimplify.load(simplifyConfigFile);
-    exclude.push(...(result?.config.exclude ?? []));
+  if (simplifyResult) {
+    exclude.push(...(simplifyResult?.config.exclude ?? []));
   }
 
-  if (fs.existsSync(opencclintrcFile)) {
-    const result = await explorerOpencclint.load(opencclintrcFile);
-    exclude.push(...(result?.config.exclude ?? []));
+  if (opencclintResult) {
+    exclude.push(...(opencclintResult?.config.exclude ?? []));
   }
 
   return exclude;
@@ -121,11 +114,13 @@ export async function compareIsExclude(document: vscode.TextDocument): Promise<b
   const folderFsPath = folders[0].uri.fsPath;
   const fileFsPath = document.uri.fsPath;
   const filePath = fileFsPath.split(folderFsPath)[1].split(path.sep).join(path.posix.sep).substring(1);
+  const simplifyResult = explorerSimplify.search(folders![0].uri.fsPath);
+  const opencclintResult = explorerOpencclint.search(folders![0].uri.fsPath);
 
   const exclude = [
     ...await getExclude(),
-    'simplify.config.js',
-    '.opencclintrc'
+    simplifyResult?.filepath || '',
+    opencclintResult?.filepath || '',
   ];
 
   const ig = ignore().add(exclude);
