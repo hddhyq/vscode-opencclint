@@ -7,7 +7,7 @@
     "url": "https://github.com/hddhyq/vscode-opencclint.git"
   },
   "publisher": "brokenbonesdd",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "license": "MIT",
   "icon": "logo.png",
   "engines": {
