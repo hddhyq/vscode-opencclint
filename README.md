@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> vscode-opencclint is merged to OpenccLint multi-package repository! This repository is now archived. Please continue at [OpenccLint](https://github.com/hddhyq/opencclint).
+
 # opencclint README
 
 使用 opencc 转换繁简体，可添加多种自定义配置，如忽略文字，忽略文件，保存自动转换。
